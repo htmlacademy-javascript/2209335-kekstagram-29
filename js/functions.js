@@ -12,7 +12,7 @@ console.log('finish');
 
 
 function isPalindrome(str) {
-  const normalizeStr = str.replaceAll(" ").toUpperCase();
+  const normalizeStr = str.replaceAll(' ').toUpperCase();
   let resultStr = '';
   for (let i = normalizeStr.length - 1; i >= 0; i--) {
     resultStr += normalizeStr.at(i);
