@@ -1,4 +1,5 @@
 import { constantQuantities } from './data.js';
+import { generatePreviewPicture } from './previewPicture.js';
 
 const picturesContainer = document.querySelector('.pictures');
 
@@ -44,7 +45,11 @@ const generatePictureLikes = (length) => {
 
 const generatePicture = (url, desc, comments, likes) => {
   const link = generateLink();
-  link.append(generateImg(url, desc));
+  const img = generateImg(url, desc);
+  img.addEventListener('click', () => {
+    generatePreviewPicture(url, desc, comments, likes);
+  });
+  link.append(img);
   link.append(generateInfo(generatePictureComments(comments.length), generatePictureLikes(likes)));
   return link;
 };
