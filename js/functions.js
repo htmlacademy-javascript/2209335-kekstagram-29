@@ -5,9 +5,6 @@ function checkMaxLengthStr(str, maxLength) {
     return false;
   }
 }
-console.log('Проверяемая строка', checkMaxLengthStr('Проверяемая строка', 20));
-console.log('Проверяемая строка', checkMaxLengthStr('Проверяемая строка', 18));
-console.log('Проверяемая строка', checkMaxLengthStr('Проверяемая строка', 10));
 
 
 const isPalindrome = (str) => {
@@ -56,10 +53,4 @@ const validateMeeting = (startWork, endWork, startMeeting, delayMeeting) => {
   return meetingDateStart >= startWorkDate && meetingDateEnd <= endWorkData;
 
 };
-
-console.log('validateMeeting()', validateMeeting('08:00', '17:30', '14:00', 90));
-console.log('validateMeeting()', validateMeeting('8:0', '10:0', '8:0', 120));
-console.log('validateMeeting()', validateMeeting('08:00', '14:30', '14:00', 90));
-console.log('validateMeeting()', validateMeeting('14:00', '17:30', '08:0', 90));
-console.log('validateMeeting()', validateMeeting('8:00', '17:30', '08:00', 900));
 
