@@ -44,12 +44,12 @@ console.log(takeNum('а я томат'));
 console.log(takeNum(-1));
 
 const validateMeeting = (startWork, endWork, startMeeting, delayMeeting) => {
-  const currentDate = new Date()
+  const currentDate = new Date();
   const [workStartHH, workStartMM] = startWork.split(':');
   const startWorkDate = new Date(currentDate.setHours(+workStartHH, +workStartMM, 0));
   const [workEndHH, workEndMM] = endWork.split(':');
   const endWorkData = new Date(currentDate.setHours(+workEndHH, +workEndMM, 0));
-  const [meetingHH, meetingMM ]= startMeeting.split(':');
+  const [meetingHH, meetingMM ] = startMeeting.split(':');
   const meetingDateStart = new Date(currentDate.setHours(+meetingHH, +meetingMM, 0));
   const meetingDateEnd = new Date(currentDate.setHours(+meetingHH, +meetingMM + delayMeeting, 0));
 
