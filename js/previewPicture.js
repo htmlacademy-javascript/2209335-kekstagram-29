@@ -40,7 +40,7 @@ const generateComment = (src, name, message, className = '') => {
   }
   return li;
 };
-/*<div className="social__comment-count">5 из <span className="comments-count">125</span> комментариев</div>*/
+
 const generateCountTextComment = (showCount, allCount) => {
   const div = document.createElement('div');
   div.classList.add('social__comment-count');
@@ -76,9 +76,18 @@ const generatePreviewPicture = (url, desc, comments, likes) => {
     }
     socialComments.appendChild(generateComment(item.avatar, item.name, item.message, classHidden));
   });
+
+  if(comments.length <= 5) {
+    console.log(comments.length);
+    btnLoader.style.display = 'none';
+  }else {
+    btnLoader.style.display = 'block';
+  }
+
   btnLoader.addEventListener('click', () => {
-    if (countComments >= comments.length) {
-      return null;
+    console.log(comments);
+    if (countComments + 1 >= comments.length) {
+      btnLoader.style.display = 'none';
     }
     const countCommentTextContainer = document.querySelector('.social__comment-count');
     if ((countComments + showCountComments) <= comments.length) {
