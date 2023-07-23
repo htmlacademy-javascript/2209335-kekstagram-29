@@ -47,6 +47,4 @@ const resArray = (_, index) => ({
 
 const constantQuantities = Array.from({ length: CONSTANT_QUANTITIES_ELEMENTS }, resArray);
 
-console.log('constantQuantities', constantQuantities);
-
 export {constantQuantities};
