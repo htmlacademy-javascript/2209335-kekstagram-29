@@ -1,7 +1,7 @@
 import { constantQuantities } from './data.js';
 import { generatePreviewPicture } from './previewPicture.js';
 
-const picturesContainer = document.querySelector('.pictures');
+export const picturesContainer = document.querySelector('.pictures');
 
 const generateImg = (url, desc) => {
   const img = document.createElement('img');
@@ -43,7 +43,7 @@ const generatePictureLikes = (length) => {
   return pictureLikes;
 };
 
-const generatePicture = (url, desc, comments, likes) => {
+export const generatePicture = (url, desc, comments, likes) => {
   const link = generateLink();
   const img = generateImg(url, desc);
   img.addEventListener('click', () => {
