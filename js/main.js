@@ -8,4 +8,4 @@ import './form.js';
 import './validate-form.js';
 import { constantQuantities } from './data.js';
 
-console.log('data', constantQuantities);
+console.log('constantQuantities:', constantQuantities);

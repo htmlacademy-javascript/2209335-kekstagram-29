@@ -1,4 +1,6 @@
-const mainForm = document.querySelector('.img-upload__form');
+const SCALE_STEP = 25;
+
+const mainFormEl = document.querySelector('.img-upload__form');
 const uploadImgInput = document.querySelector('.img-upload__input');
 const imgUploadOverlay = document.querySelector('.img-upload__overlay');
 const impIploadPreview = document.querySelector('.img-upload__preview');
@@ -8,7 +10,6 @@ const closeimgUploadOverlayBtn = document.querySelector('#upload-cancel');
 const scaleControlInput = document.querySelector('.scale__control--value');
 const scaleControlMinusBtn = document.querySelector('.scale__control--smaller');
 const scaleControlPlusBtn = document.querySelector('.scale__control--bigger');
-const SCALE_STEP = 25;
 
 const sliderElement = document.querySelector('.effect-level__slider');
 const valueElement = document.querySelector('.effect-level__value');
@@ -18,38 +19,38 @@ const radioEffectsInputs = document.querySelectorAll('.effects__radio');
 
 let currentEffect = 'none';
 
-function inputInFocus(input) {
+const inputInFocus = (input) => {
   if (document.activeElement === input) {
     return true;
   } else {
     return false;
   }
-}
+};
 
-function closeOverlayByClickOnOutside(e) {
+const closeOverlayByClickOnOutside = (e) => {
   if (e.target === imgUploadOverlay) {
     closeImgUploadOverlay();
   }
-}
+};
 
-function closeOverlayByClickOnEsc(e) {
+const closeOverlayByClickOnEsc = (e) => {
   if (inputInFocus(hashtagInput) || inputInFocus(textInput)) {
     return false;
   }
   if (e.key === 'Escape') {
     closeImgUploadOverlay();
   }
-}
+};
 
-function closeImgUploadOverlay() {
+export const closeImgUploadOverlay = () => {
   window.removeEventListener('keydown', closeOverlayByClickOnEsc);
   window.removeEventListener('click', closeOverlayByClickOnOutside);
   imgUploadOverlay.classList.add('hidden');
   document.body.classList.remove('modal-open');
-  mainForm.reset();
-}
+  mainFormEl.reset();
+};
 
-function previewImage(e) {
+const previewImage = (e) => {
   const input = e.target;
   const preview = imgUploadOverlay.querySelector('img');
   const file = input.files[0];
@@ -63,18 +64,16 @@ function previewImage(e) {
   } else {
     preview.src = '';
   }
-}
+};
 
-
-function openImgUploadOverlay() {
+export const openImgUploadOverlay = () => {
   window.addEventListener('keydown', closeOverlayByClickOnEsc);
   window.addEventListener('click', closeOverlayByClickOnOutside);
   imgUploadOverlay.classList.remove('hidden');
   document.body.classList.add('modal-open');
-}
+};
 
-
-function minusPreviewScale() {
+const minusPreviewScale = () => {
   const scaleControlInputValue = parseInt(scaleControlInput.value, 10);
   if (scaleControlInputValue <= 25) {
     return false;
@@ -84,9 +83,9 @@ function minusPreviewScale() {
   impIploadPreview.querySelector('img').style.transform = `scale(${
     value / 100
   })`;
-}
+};
 
-function plusPreviewScale() {
+const plusPreviewScale = () => {
   const scaleControlInputValue = parseInt(scaleControlInput.value, 10);
 
   if (scaleControlInputValue >= 100) {
@@ -97,9 +96,9 @@ function plusPreviewScale() {
   impIploadPreview.querySelector('img').style.transform = `scale(${
     value / 100
   })`;
-}
+};
 
-function toggleEffect() {
+const toggleEffect = () => {
   switch (currentEffect) {
     case 'chrome':
       sliderContainer.classList.remove('hidden');
@@ -131,7 +130,7 @@ function toggleEffect() {
       impIploadPreview.style.filter = `brightness(${+valueElement.value})`;
       break;
   }
-}
+};
 
 closeimgUploadOverlayBtn.addEventListener('click', () => {
   closeImgUploadOverlay();
